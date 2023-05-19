@@ -6,15 +6,15 @@ This project was created to put into practice the learning about automated testi
 This project consists of an application with a Customer Service Center form, where the users fill in data regarding the support service of the company TAT. The teste consist of verify that all the functionalities are being executed as expected, applying automated tests.
 
 # Technologies used
-HTML 5
-CSS 3
-Javascript
-Cypress v12.12.0
+- HTML 5
+- CSS 3
+- Javascript
+- Cypress v12.12.0
 
 # prerequisites
-Git: 2.40.1
-Node.js: v18.16.0
-NPM versão: 9.5.1
+- Git: 2.40.1
+- Node.js: v18.16.0
+- NPM versão: 9.5.1
 
 # Installation
 Run npm install (or npm i for the short version) to install the dev dependencies.
