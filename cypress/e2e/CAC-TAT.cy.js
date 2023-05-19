@@ -17,24 +17,28 @@ describe('Central de Atendimento ao Cliente TAT',() =>{
 
     })
 
-    it('Preencher os campos obrigatorios e enviar o formulário',()=>{
-
-
-        cy.clock()
-
-        cy.get('#firstName').type('Alisson', {delay:0})
-        cy.get('#lastName').type('Carvalho', {delay:0})
-        cy.get('#email').type('alisson@teste.com', {delay:0})
-
-        cy.get('#open-text-area').type('Realização de teste', {delay:0})
-
-        cy.contains('button','Enviar').click()
-
-        cy.get('.success').should('be.visible')
-
-        cy.tick(THREE_SECONDS_IN_MS)
-
-        cy.get('.success').should('not.be.visible')
+    Cypress._.times(3, () =>{
+        it('Preencher os campos obrigatorios e enviar o formulário',()=>{
+    
+            const text = Cypress._.repeat('TESTE ', 20)
+            
+            cy.clock()
+    
+            cy.get('#firstName').type('Alisson', {delay:0})
+            cy.get('#lastName').type('Carvalho', {delay:0})
+            cy.get('#email').type('alisson@teste.com', {delay:0})
+    
+            cy.get('#open-text-area').invoke('val', text).should('have.value', text)
+    
+            cy.contains('button','Enviar').click()
+    
+            cy.get('.success').should('be.visible')
+    
+            cy.tick(THREE_SECONDS_IN_MS)
+    
+            cy.get('.success').should('not.be.visible')
+    
+        })
 
     })
     it('Exibe mensagem de erro ao submeter o formulário com um email com formatação invalida',()=>{
@@ -216,6 +220,36 @@ describe('Central de Atendimento ao Cliente TAT',() =>{
 
     })
 
+    it('exibe e esconde as mensagens de sucesso e erro usando o .invoke', () => {
+        cy.get('.success')
+          .should('not.be.visible')
+          .invoke('show')
+          .should('be.visible')
+          .and('contain', 'Mensagem enviada com sucesso.')
+          .invoke('hide')
+          .should('not.be.visible')
+        cy.get('.error')
+          .should('not.be.visible')
+          .invoke('show')
+          .should('be.visible')
+          .and('contain', 'Valide os campos obrigatórios!')
+          .invoke('hide')
+          .should('not.be.visible')
+      })
+
+      it('faz uma requisição HTTP',() =>{
+
+
+        cy.request({
+            method:'GET',
+            url:'https://cac-tat.s3.eu-central-1.amazonaws.com/index.html'
+        }).then((response) =>{
+            expect(response.status).to.equal(200)
+            expect(response.statusText).to.equal('OK')
+            expect(response.body).include('CAC TAT')
+        })
+
+      })
 
 
 })
