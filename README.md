@@ -1,25 +1,25 @@
-#Testing an Application with Cypress
+# Testing an Application with Cypress
 
 This project was created to put into practice the learning about automated testing wich Cypress 
 
-#About
+# About
 This project consists of an application with a Customer Service Center form, where the users fill in data regarding the support service of the company TAT. The teste consist of verify that all the functionalities are being executed as expected, applying automated tests.
 
-#Technologies used
+# Technologies used
 HTML 5
 CSS 3
 Javascript
 Cypress v12.12.0
 
-#prerequisites
+# prerequisites
 Git: 2.40.1
 Node.js: v18.16.0
 NPM versão: 9.5.1
 
-#Installation
+# Installation
 Run npm install (or npm i for the short version) to install the dev dependencies.
 
-#Run tests
+# Run tests
 Run npm test (or npm t for the short version) to run the tests in headless mode for Desktop screen version.
 
 
